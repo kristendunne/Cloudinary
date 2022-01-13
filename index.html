@@ -1,0 +1,66 @@
+<button id="upload_widget" class="cloudinary-button">Upload files</button>
+<div id ="body" >
+</div>
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>  
+
+<script type="text/javascript"> 
+
+var myWidget = cloudinary.createUploadWidget({
+  cloudName: 'dh7gi8p79', 
+  uploadPreset: 'y1infzfq'}, (error, result) => { 
+    if (!error && result && result.event === "success") { 
+      var public_id = result.info.public_id
+      var URL = 'https://res.cloudinary.com/dh7gi8p79/image/upload/w_120,h_120,c_limit,q_1/' + public_id
+      console.log('Done! Here is the image info: ', result.info); 
+      console.log(URL)
+
+      fetch('http://localhost:5000/add?public_id=' + public_id)
+
+      var img = document.createElement('img');
+      img.src = URL;
+      document.getElementById("body").appendChild(img); 
+    } 
+    
+}
+
+) 
+fetch('http://localhost:5000/list')
+      .then(response => response.json())
+      .then(data => {
+        for (var i = 0; i < data.length; i++) 
+        {
+          var public_id = data[i]
+          var URL = 'https://res.cloudinary.com/dh7gi8p79/image/upload/w_120,h_120,c_limit,q_1/' + public_id
+          var img = document.createElement('img');
+          img.src = URL;
+          document.getElementById("body").appendChild(img);
+          console.log(data[i]);
+    }
+      //  console.log(data[0])
+      }
+        );
+document.getElementById("upload_widget").addEventListener("click", function(){
+    myWidget.open();
+  }, false);
+</script>
+
+<!--
+Got upload widget to work (default)
+  Replaced cloud name and created preset
+  Verified this uploaded to dashboard in Cloudinary
+  Hosted using simple http server
+
+Displayed image on page
+  Used secure_URL to display image
+  Played with transformations (scale, crop, quality) to image
+    Used public_ID from response to use whichever image was uploaded 
+
+Created flask app with 2 endpoints - in memory rather than using DB
+  Read public_id list
+  Add new public_id
+
+Connected front-end and back-end app together
+  Added persistence - each time we update list, additional items are added and prior remain
+  New items are added to back-end (where front-end is pulling from and displaying in console,
+  then as images on page)
+-->
