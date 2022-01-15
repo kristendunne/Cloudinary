@@ -30,7 +30,7 @@ fetch('http://localhost:5000/list')
         for (var i = 0; i < data.length; i++) 
         {
           var public_id = data[i]
-          var URL = 'https://res.cloudinary.com/dh7gi8p79/image/upload/w_120,h_120,c_limit,q_1/' + public_id
+          var URL = 'https://res.cloudinary.com/dh7gi8p79/image/upload/w_120,h_120,c_limit,q_50/' + public_id
           var img = document.createElement('img');
           img.src = URL;
           document.getElementById("body").appendChild(img);
