@@ -16,7 +16,7 @@ flask run
 ```
 
 ## Summary of steps completed:
-1. Successful use of Cloudinary's Upload Widget
+1. Implemented Cloudinary's Upload Widget
     - Replaced cloud name and created a preset
     - Verified successful upload to Cloudinary's Media Library
     - Hosted using a simple http server
