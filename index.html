@@ -10,7 +10,7 @@ var myWidget = cloudinary.createUploadWidget({
   uploadPreset: 'y1infzfq'}, (error, result) => { 
     if (!error && result && result.event === "success") { 
       var public_id = result.info.public_id
-      var URL = 'https://res.cloudinary.com/dh7gi8p79/image/upload/w_120,h_120,c_limit,q_1/' + public_id
+      var URL = 'https://res.cloudinary.com/dh7gi8p79/image/upload/w_120,h_120,c_limit,q_50/' + public_id
       console.log('Done! Here is the image info: ', result.info); 
       console.log(URL)
 
