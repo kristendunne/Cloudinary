@@ -15,6 +15,7 @@ Access front-end: http://localhost:8000
 ```
 flask run
 ```
+Access back-end: http://localhost:5000
 
 ## Summary of steps completed:
 1. Implemented Cloudinary's Upload Widget
