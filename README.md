@@ -9,6 +9,7 @@
 ```
 py -m http.server
 ```
+Access front-end: http://localhost:8000
 
 ## Run back-end:
 ```
